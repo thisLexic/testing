@@ -1,0 +1,16 @@
+{% extends "base.html" %}	
+{% load crispy_forms_tags %}
+{% block title %}
+Login
+{% endblock %}
+
+{% block body %}
+<br>
+
+<h1 align='middle'>Login Page for BTS Staff</h1>
+    <form method="POST">
+        {% csrf_token %}
+		{{ form|crispy }}
+        <input type="submit" class='btn btn-primary' value="Login" />
+    </form>
+{% endblock %}

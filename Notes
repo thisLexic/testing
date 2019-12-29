@@ -1,0 +1,26 @@
+To add
+	Inventory
+
+	Discount row for Entry table
+		you might need a new table for this to remove 
+			the repeating 0's in a normally 0 discount day
+		table contains:
+			date
+			discounted price
+			foreign key to product
+			foreign key to branch
+			foreign key to entry???
+			???
+	window for days that have been done (calendar)
+		show a calendar of what days have entries
+	check
+		messages.info(request, 'Successfully submitted the form for ' + date)
+
+To ask
+	views
+		Ugly
+			request_post.__getitem__("form-" + str(n) + "-product_number")
+		Redundant
+			checking for emptiness of formsets even though I already defined it in models
+
+	validation of forms?

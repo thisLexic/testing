@@ -1,0 +1,51 @@
+{% extends "base.html" %}	
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block title %}
+Form
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="/static/form.css">
+
+  	<br>
+<h1>Daily Sales</h1>
+  <form method="POST" action="{% url 'form:create' %}" id="groupForm">
+  	{% csrf_token %}
+
+  	{% if isempty %}
+  		<h3 align='middle' id="submitfail">Submission Failed: The values for the products cannot be empty.<br>If none were sold, put 0.</h3>
+  	{% endif %}
+  	{% if isrepeat %}
+  		<h3 align='middle' id="submitfail">Submission Failed: You already provided an entry for {{ invalidbranch }} on {{ invaliddate }}</h3>
+  	{% endif %}
+	{{ form.date|as_crispy_field }}
+	<br>
+
+	{{ form.branch|as_crispy_field }}
+	<br>
+
+	{{ formM|crispy }}
+	<br>
+	{% for product, field in formP %}
+		{{product.name}}
+		{{field}}
+		<br>
+	{% endfor %}
+	<br>
+  	<button type="submit" class="btn btn-primary btn-large">Submit Form</button>
+  </form>
+    
+	<br>
+	<br>
+	<br>
+
+{% endblock %}
+
+<!-- 	{% for p, f in form_products %}
+		{{ p.name }}
+		{{ f }}
+		<br>
+	{% endfor %}
+	<br> -->
